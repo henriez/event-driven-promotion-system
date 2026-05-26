@@ -1,0 +1,36 @@
+# Environments
+.env
+
+# Maven / Spring Boot
+target/
+*.jar
+*.war
+*.class
+.mvn/
+
+# Node / Vue (Frontend)
+frontend/node_modules/
+frontend/dist/
+frontend/.npm/
+
+# Docker Volumes
+pgdata-promotion/
+pgdata-ranking/
+pgdata-notification/
+rabbitmq-data/
+
+# IDE / OS
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+*.un~
