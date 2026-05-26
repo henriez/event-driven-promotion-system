@@ -1,4 +1,9 @@
 services:
+  zipkin:
+    image: openzipkin/zipkin:latest
+    ports:
+      - "9411:9411"
+      
   rabbitmq-server:
     image: rabbitmq:3-management
     ports:
@@ -12,7 +17,7 @@ services:
     environment:
       POSTGRES_USER: ${PROMO_DB_USER}
       POSTGRES_PASSWORD: ${PROMO_DB_PASS}
-      POSTGRES_DB: db_promotion
+      POSTGRES_DB: ${PROMO_DB_NAME}
     ports:
       - "5432:5432"
     volumes:
@@ -23,7 +28,7 @@ services:
     environment:
       POSTGRES_USER: ${RANKING_DB_USER}
       POSTGRES_PASSWORD: ${RANKING_DB_PASS}
-      POSTGRES_DB: db_ranking
+      POSTGRES_DB: ${RANKING_DB_NAME}
     ports:
       - "5433:5432"
     volumes:
@@ -34,7 +39,7 @@ services:
     environment:
       POSTGRES_USER: ${NOTIF_DB_USER}
       POSTGRES_PASSWORD: ${NOTIF_DB_PASS}
-      POSTGRES_DB: db_notification
+      POSTGRES_DB: ${NOTIF_DB_NAME}
     ports:
       - "5434:5432"
     volumes:
