@@ -189,7 +189,9 @@ function connectSSE() {
   eventSource.onmessage = (event: MessageEvent) => {
     try {
       const data = JSON.parse(event.data) as Promotion
-      promotions.value.push(data)
+      if (!selectedCategory.value || data.category.toLowerCase() === selectedCategory.value.toLowerCase()) {
+        promotions.value.push(data)
+      }
     } catch (e) {
       console.error('Failed to parse SSE event', e)
     }
