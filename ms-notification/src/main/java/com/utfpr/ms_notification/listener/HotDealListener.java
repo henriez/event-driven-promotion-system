@@ -46,7 +46,7 @@ public class HotDealListener {
             String storeText = "Your promotion \"" + event.title() + "\" in category \""
                     + event.category() + "\" is now a hot deal at $" + event.price() + ".\n"
                     + "URL: " + event.url();
-            resendClient.sendEmail(contact.getEmail(), storeSubject, storeText, 0L);
+            resendClient.sendEmail(contact.getEmail(), storeSubject, storeText, event.id());
             log.info("Store notification sent to {} for promotion: {}", contact.getEmail(), event.title());
         } else {
             log.warn("No store contact found for storeId: {} on promotion: {}", event.storeId(), event.title());
@@ -64,7 +64,7 @@ public class HotDealListener {
             String subText = "A hot deal is available in category \"" + event.category() + "\":\n"
                     + event.title() + " - $" + event.price() + "\n"
                     + event.url();
-            resendClient.sendEmail(subscriber.getEmail(), subSubject, subText, 0L);
+            resendClient.sendEmail(subscriber.getEmail(), subSubject, subText, event.id());
             notifiedCount++;
         }
         log.info("Subscriber notifications sent: {} for category: {} on promotion: {}", notifiedCount, event.category(), event.title());

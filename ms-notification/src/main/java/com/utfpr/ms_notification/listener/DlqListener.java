@@ -38,6 +38,6 @@ public class DlqListener {
                 + "Price: " + event.price() + "\n"
                 + "Please review and resubmit with corrected data.";
 
-        resendClient.sendEmail(contact.getEmail(), subject, text, 0L);
+        resendClient.sendEmail(contact.getEmail(), subject, text, event.id());
     }
 }
