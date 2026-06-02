@@ -23,16 +23,16 @@ services:
     volumes:
       - pgdata-promotion:/var/lib/postgresql/data
 
-  postgres-ranking:
+  postgres-auth:
     image: postgres:16
     environment:
-      POSTGRES_USER: ${RANKING_DB_USER}
-      POSTGRES_PASSWORD: ${RANKING_DB_PASS}
-      POSTGRES_DB: ${RANKING_DB_NAME}
+      POSTGRES_USER: ${AUTH_DB_USER}
+      POSTGRES_PASSWORD: ${AUTH_DB_PASS}
+      POSTGRES_DB: ${AUTH_DB_NAME}
     ports:
       - "5433:5432"
     volumes:
-      - pgdata-ranking:/var/lib/postgresql/data
+      - pgdata-auth:/var/lib/postgresql/data
 
   postgres-notification:
     image: postgres:16
@@ -48,5 +48,5 @@ services:
 volumes:
   rabbitmq-data:
   pgdata-promotion:
-  pgdata-ranking:
+  pgdata-auth:
   pgdata-notification:
